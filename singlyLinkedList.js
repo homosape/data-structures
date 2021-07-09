@@ -123,9 +123,3 @@ class SinglyLinkedList {
 		return this;
 	}
 }
-
-const list = new SinglyLinkedList();
-list.push("Jack");
-// list.push("Jiny");
-list.push("Irakliusi");
-console.log(list);

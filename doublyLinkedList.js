@@ -129,10 +129,3 @@ class DoublyLinkedList {
 	}
 	reverse() {}
 }
-
-const doublyList = new DoublyLinkedList();
-doublyList.push("jack");
-doublyList.push("ika");
-doublyList.push("nini");
-
-// <- jack -> <- ika <- -> nini ->
