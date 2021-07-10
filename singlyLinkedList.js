@@ -112,14 +112,31 @@ class SinglyLinkedList {
 
 		let prev = null;
 		let next;
+		console.log(node);
+		console.log(node.next);
 		while (count < this.length) {
 			next = node.next;
-			node.text = prev;
+			node.next = prev;
 			prev = node;
 			node = next;
 			count++;
 		}
-		this.tail.next = null;
 		return this;
 	}
 }
+
+const list = new SinglyLinkedList();
+
+list.push("ika");
+list.push("nini");
+list.push("mari");
+list.push("gio");
+list.push("bio");
+list.reverse();
+
+// console.log(list);
+
+/*
+	ika		nini	gio		mari	lasha
+	node	next	prev
+*/
