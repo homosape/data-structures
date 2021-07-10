@@ -112,8 +112,6 @@ class SinglyLinkedList {
 
 		let prev = null;
 		let next;
-		console.log(node);
-		console.log(node.next);
 		while (count < this.length) {
 			next = node.next;
 			node.next = prev;
