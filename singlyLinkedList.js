@@ -105,16 +105,17 @@ class SinglyLinkedList {
 		return this;
 	}
 	reverse() {
-		let count = 0;
 		let node = this.head;
 		this.head = this.tail;
 		this.tail = node;
+		let count = 0;
 
 		let prev = null;
-		let next;
+		let next = null;
 		while (count < this.length) {
 			next = node.next;
 			node.next = prev;
+
 			prev = node;
 			node = next;
 			count++;
@@ -127,14 +128,25 @@ const list = new SinglyLinkedList();
 
 list.push("ika");
 list.push("nini");
-list.push("mari");
 list.push("gio");
-list.push("bio");
+list.push("mari");
+list.push("lasha");
 list.reverse();
 
-// console.log(list);
-
 /*
-	ika		nini	gio		mari	lasha
-	node	next	prev
+		head							tail
+		ika		nini	gio		mari	lasha
+		node
+
+prev = null
+next = 
+
+
+		tail							head
+		ika		nini	gio		mari	lasha
+prev    node	next
+
+		tail							head
+		ika		nini	gio		mari	lasha
+		prev	node	next
 */

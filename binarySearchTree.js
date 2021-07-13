@@ -44,20 +44,65 @@ class BinarySearchTree {
 		if (!found) return -1;
 		if (found) return true;
 	}
+
+	breadthSearch() {
+		let node;
+		const data = [];
+		const queue = [this.root];
+
+		while (queue.length) {
+			node = queue.shift();
+			data.push(node.value);
+			if (node.left) queue.push(node.left);
+			if (node.right) queue.push(node.right);
+		}
+		return data;
+	}
+
+	depthSearchPreorder() {
+		const visited = [];
+		let current = this.root;
+
+		const traverse = (node) => {
+			visited.push(node.value);
+			if (node.left) traverse(node.left);
+			if (node.right) traverse(node.right);
+		};
+		traverse(current);
+		return visited;
+	}
+	depthSearchInOrder() {
+		const visited = [];
+		let current = this.root;
+
+		const traverse = (node) => {
+			if (node.left) traverse(node.left);
+			visited.push(node.value);
+			if (node.right) traverse(node.right);
+		};
+		traverse(current);
+		return visited;
+	}
 }
 
 const tree = new BinarySearchTree();
 tree.insert(10);
 tree.insert(11);
-tree.insert(20);
-tree.insert(9);
-tree.insert(-2);
+tree.insert(6);
+tree.insert(4);
 tree.insert(7);
+tree.insert(9);
+tree.insert(20);
 
-console.log(tree.find(20));
+console.log(tree.depthSearchInOrder());
+
 /*
          10
-    -2          11
-        7    9     20
+     6          11
+ 4      7    9     20
+node = this.root	node = 6
+data = []			data = [10]
+queue = [10]		queue = []
+tempNode = 10	   tempNode = null;
 
 */

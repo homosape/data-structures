@@ -34,7 +34,6 @@ class Queue {
 			const nodeAfter = first.next;
 			this.first = nodeAfter;
 			first.next = null;
-			// remove first item
 		}
 		this.length--;
 		return this;
