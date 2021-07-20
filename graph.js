@@ -33,6 +33,51 @@ class Graph {
 			(i) => i !== nodeOne
 		);
 	}
+
+	depthFirstSearch(node) {
+		if (!this.adjacencyList[node]) throw new Error("Node does not exist.");
+		const stack = [node];
+		const result = [];
+		const visited = {};
+
+		visited[node] = true;
+		let currentNode;
+
+		while (stack.length) {
+			currentNode = stack.pop();
+			result.push(currentNode);
+
+			this.adjacencyList[currentNode].forEach((i) => {
+				if (!visited[i]) {
+					visited[i] = true;
+					stack.push(i);
+				}
+			});
+		}
+		return result;
+	}
+
+	breadthFirstSearch(node) {
+		if (!this.adjacencyList[node]) throw new Error("Node does not exist.");
+		const queue = [node];
+		const result = [];
+		const visited = {};
+
+		visited[node] = true;
+		let currentNode;
+		while (queue.length) {
+			currentNode = queue.shift();
+			result.push(currentNode);
+
+			this.adjacencyList[currentNode].forEach((i) => {
+				if (!visited[i]) {
+					visited[i] = true;
+					queue.push(i);
+				}
+			});
+		}
+		return result;
+	}
 }
 
 const graph = new Graph();
@@ -44,5 +89,6 @@ graph.addLink("Ika", "Nini");
 graph.addLink("Gio", "Ika");
 graph.addLink("Gio", "Nini");
 graph.addLink("Ika", "Teo");
-graph.removeNode("Ika");
-console.log(graph);
+// graph.removeNode("Ika");
+console.log(graph.breadthFirstSearch("Ika"));
+console.log(graph.depthFirstSearch("Ika"));
